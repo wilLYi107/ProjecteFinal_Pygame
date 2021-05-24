@@ -1,0 +1,10 @@
+{
+  "exitButton": {
+    "colours": {
+      "normal_bg": "#ff0000",
+      "hovered_bg": "#ffffff",
+      "normal_text": "#ffffff",
+      "hovered_text": "#ff0000"
+    }
+  }
+}

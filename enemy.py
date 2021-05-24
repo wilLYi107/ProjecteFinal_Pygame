@@ -1,29 +1,31 @@
 import pygame
 import bullet
 
+imageList = [pygame.image.load("Assets/img/j3.png"), pygame.image.load("Assets/img/j4.png")]
+
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, posX, posY, dist, img1, img2):
+    def __init__(self, width, height, enemyNum):
         pygame.sprite.Sprite.__init__(self)
-        self.imageList = [pygame.image.load(img1), pygame.image.load(img2)]
-        self.position = 0
-        self.enemyImage = self.imageList[self.position]
-
+        self.width = width
+        self.height = height
+        self.enemyNum = enemyNum
+        self.enemyImage = pygame.transform.scale(imageList[self.enemyNum - 1], (100, 100))
+        self.rotatedImage = pygame.transform.scale(imageList[self.enemyNum - 1], (100, 100))
+        self.rotatedImage = pygame.transform.rotate(self.rotatedImage, 180)
         self.rect = self.enemyImage.get_rect()
-        self.rect.centerx = posX
-        self.rect.centery = posY
-
+        if enemyNum == 1:
+            self.rect.centerx = self.width * 0.25
+        elif enemyNum == 2:
+            self.rect.centerx = self.width * 0.75
+        self.rect.centery = 100
         self.bulletList = []
         self.lateralSpeed = 1
         self.animationTime = 1
         self.shotRange = 1
         self.win = False
-
         self.right = True
         self.count = 0
         self.maxDown = self.rect.top + 10
-
-        self.limitR = posX + dist
-        self.limitL = posX - dist
 
     def change(self, time):
         if not self.win:
@@ -32,8 +34,7 @@ class Enemy(pygame.sprite.Sprite):
             if self.animationTime == time:
                 self.position += 1
                 self.animationTime += 1
-
-                if self.position > len(self.imageList) - 1:
+                if self.position > len(imageList) - 1:
                     self.position = 0
 
     def __movement(self):
@@ -62,8 +63,7 @@ class Enemy(pygame.sprite.Sprite):
             self.rect.top += 1
 
     def draw(self, surface):
-        self.enemyImage = self.imageList[self.position]
-        surface.blit(self.enemyImage, self.rect)
+        surface.blit(self.rotatedImage, self.rect)
 
     def __attack(self):
         pass
