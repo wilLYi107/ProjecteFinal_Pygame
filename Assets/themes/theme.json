@@ -6,5 +6,35 @@
       "normal_text": "#ffffff",
       "hovered_text": "#ff0000"
     }
+  },
+
+  "normalButton": {
+    "colours": {
+      "normal_bg": "#000000",
+      "hovered_bg": "#333333",
+      "normal_text": "#ffffff",
+      "hovered_text": "#dddddd"
+    }
+  },
+
+  "menuButton": {
+    "colours": {
+      "normal_bg": "#0000ff",
+      "hovered_bg": "#ffffff",
+      "selected_bg": "#ffffff",
+      "disabled_bg": "#000000",
+      "normal_text": "#ffffff",
+      "hovered_text": "#0000ff",
+      "selected_text": "#0000ff"
+    }
+  },
+
+  "startButton": {
+    "colours": {
+      "normal_bg": "#99FF33",
+      "hovered_bg": "#BBFF55",
+      "normal_text": "#000000",
+      "hovered_text": "#000000"
+    }
   }
 }
